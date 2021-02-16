@@ -102,6 +102,10 @@ def nobel_johns
   execute(<<-SQL)
     SELECT
       winner
+    FROM
+      nobels
+    WHERE 
+      winner LIKE 'John%';
       
   SQL
 end
