@@ -35,23 +35,11 @@ def largest_in_continent
   # name, and area.
   execute(<<-SQL)
     SELECT
-       continent, name, area
+      continent, name, area
     FROM
       countries
-    WHERE 
-      name IN (
-        SELECT
-          name
-      )
-      
-      
-      
-      (
-          SELECT
-            MAX(area)
-          FROM
-            countries
-        );
+    WHERE
+      area = THE BIGGEST ONE IN THE CONTINENT NOT JUST RUSSIA
   SQL
 end
 
