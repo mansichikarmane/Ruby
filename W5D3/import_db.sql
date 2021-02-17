@@ -1,8 +1,9 @@
-DROP TABLE IF EXISTS users
-DROP TABLE IF EXISTS questions
-DROP TABLE IF EXISTS question_follows
-DROP TABLE IF EXISTS replies
-DROP TABLE IF EXISTS question_likes
+DROP TABLE IF EXISTS question_follows;
+DROP TABLE IF EXISTS question_likes;
+DROP TABLE IF EXISTS replies;
+DROP TABLE IF EXISTS questions;
+DROP TABLE IF EXISTS users;
+PRAGMA foreign_keys = ON;
 
 CREATE TABLE users(
   id INTEGER PRIMARY KEY,
@@ -42,9 +43,21 @@ CREATE TABLE question_likes(
   user_id INTEGER NOT NULL,
   question_id INTEGER NOT NULL,
   FOREIGN KEY(user_id) REFERENCES users(id),
-  FOREIGN KEY(question_id) REFERENCES questions(id
+  FOREIGN KEY(question_id) REFERENCES questions(id)
 );
 
 INSERT INTO 
-  question_likes(id)
+  users(fname, lname)
 VALUES
+  ("John", "Doe"),
+  ("Harry", "Potter");
+
+INSERT INTO 
+  questions(title, body, author_id)
+VALUES
+  ("What is the best spell for flying", "wingardium leviosa",(SELECT id FROM users WHERE fname = "Harry"));
+  
+INSERT INTO
+  replies(author_id, question_id, parent_reply_id, body)
+VALUES
+  (2, 1, NULL, "I think you're wrong...");
