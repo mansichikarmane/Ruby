@@ -1,9 +1,24 @@
+# == Schema Information
+#
+# Table name: enrollments
+#
+#  id         :bigint           not null, primary key
+#  course_id  :integer
+#  student_id :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class Enrollment < ApplicationRecord
-  validates [:user_id, :course_id], presence: true
+  validates :student_id, :course_id, presence: true
   
-  belongs_to :student,
+  belongs_to :students,
     primary_key: :id,
-    foreign_key: :user_id,
+    foreign_key: :student_id,
     class_name: :User
   # many to many association
+
+  belongs_to :courses,
+    primary_key: :id,
+    foreign_key: :course_id,
+    class_name: :Course
 end
