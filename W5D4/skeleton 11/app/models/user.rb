@@ -12,12 +12,12 @@ class User < ApplicationRecord
 
   has_many :enrollments,
     primary_key: :id,
-    foreign_key: :course_id,
+    foreign_key: :student_id,
     class_name: :Enrollment
 
-  has_many :courses,
-  through: :enrollments,
-  source: :courses
+  has_many :enrolled_courses, # creates an instance method
+    through: :enrollments,
+    source: :courses
 end
 
 

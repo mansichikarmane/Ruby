@@ -15,10 +15,21 @@ class Course < ApplicationRecord
   # add_index :course, :course_id, options
   has_many :enrollments,
     primary_key: :id,
-    foreign_key: :student_id,
-    class_name: :Enrollment
+    foreign_key: :course_id,
+    class_name: :User
   
   has_many :students, 
-  through: :enrollments, #always association names in current class
-  source: :students #where the through gets us
+    through: :enrollments, #always association names in current class
+    source: :student #where the through gets us
+
+  belongs_to :prereq, optional: true,
+    primary_key: :id,
+    foreign_key: :prereq_id,
+    class_name: :Course
+
+  belongs_to :instructor,
+    primary_key: :id,
+    foreign_key: :instructor_id,
+    class_name: :User
+
 end
