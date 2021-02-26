@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   # resources :artworks
   get 'artworks/:id', to: 'artworks#show', as: 'artwork'
-  get 'artworks', to: 'artworks#index', as: 'artworks'
+  # get 'artworks', to: 'artworks#index', as: 'artworks'
   post 'artworks', to: 'artworks#create'
   patch 'artworks/:id', to: 'artworks#update'
   put 'artworks/:id', to: 'artworks#update'
@@ -34,4 +34,7 @@ Rails.application.routes.draw do
   # get 'artwork_shares/new', to:'artwork_shares#new', as: 'new_artwork_shares'
   # get 'artwork_shares/:id/edit', to: 'artwork_shares#edit', as: 'edit_artwork_shares'
 
+  resources :users do 
+    resources :artworks, only: [:index]
+  end
 end
