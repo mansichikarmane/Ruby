@@ -159,3 +159,37 @@ resources :users do
   # 2) HTTP method (ex: POST)
   # 3) inputs with labels (optional)
   # 4) submit button
+
+# Controller Redirecting
+  # Redirecting
+    # Ends current request / response cycle and initializes a second
+    # Syntax: redirect_to <Rails URL Helper>
+    # Example:
+       redirect_to user_url(@user)
+    # Use the prefeixes provided to you by rails routes
+
+#----------------------------[Back in Demo]------------------------------
+# in users_controller.rb
+def new 
+  # common patter to have access to a blank User instance
+  @user = User.new
+  # this is optional, Rails will know what template you want to render
+  render :new
+end
+
+# now create a new.html.erb file to make a form
+<h1> New User Form </h1>
+
+<form action="<% users_url %>" method="POST">
+  <label>Username:
+    <input type="text" name="user[username]" value="<% @user.username %>">
+  </label>
+  <label>Age:
+    <input type="text" name="user[age]" value="<% @user.age %>">
+  </label>
+  <label>Email:
+    <input type="text" name="user[email]" value="<% @user.email %>">
+  </label>
+
+  <input type="submit" value="Create User">
+</form>
