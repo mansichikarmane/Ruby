@@ -15,11 +15,10 @@ require "action_view"
 class Cat < ApplicationRecord
   include ActionView::Helpers::DateHelper
   COLORS = ['orange', 'black', 'white', 'gray']
+  SEXES = ['M', 'F']
   validates :birth_date, :color, :name, :sex, presence: true
   validates :color, inclusion: {in: COLORS}
-
-  
-
+  validates :sex, inclusion: {in: SEXES}
 
   def age
     Date.now - self.birth_date
