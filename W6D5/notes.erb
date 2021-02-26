@@ -125,9 +125,9 @@ resources :users do
 
 # back in _user.html.erb to add links
   <% if action == 'show' %>
-    <a href="" <%= users_url %>>Users Index Linke</a>
+    <a href="" <%= users_url %>>Users Index Link</a>
   <% else %>
-    <a href ="" <%= users_url(user.id)%>></a>
+    <a href ="" <%= users_url(user.id)%>>User Show Page</a>
   <% end %>
 
   <ul>
@@ -147,3 +147,15 @@ resources :users do
       </li>
     <% end %>
   </ul>
+# ----------------------------------------------------------
+# The new and edit routes
+  # HTML/ERB template to create or update an instance of data
+  # They simply render templates that contain forms!
+  # All they do is render a form!
+  # New and edit are both gets
+
+# Form Anatomy!
+  # 1) action (aka path/rails helper)
+  # 2) HTTP method (ex: POST)
+  # 3) inputs with labels (optional)
+  # 4) submit button
