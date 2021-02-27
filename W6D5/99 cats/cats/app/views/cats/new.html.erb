@@ -1,0 +1,35 @@
+<h1>Create a new cat!</h1>
+
+<form action="<%=cats_url%>" method="POST">
+  <label>Name:
+  <input type="text" name="cat[name]" value="<%=@cat.name%>">
+  </label>
+  <br>
+  <label>Sex:
+  <label>Male</label>
+  <input type="radio" name="cat[sex]" value=<%=@cat.sex = 'M'%>>
+  <label>Female</label>
+  <input type="radio" name="cat[sex]" value=<%=@cat.sex = 'F'%>>
+  </label>
+  <br>
+  <label>Birthdate:</label>
+  <input type="date" name="cat[birth_date]" value="<%=@cat.name%>">
+  <br>
+  <label>Description:</label>
+  <textarea name="cat[description]"><%=@cat.description%></textarea>
+  <br>
+  <label>Color:
+  <select name="cat[color]">
+  <label>Black<option name="cat[color]" value=<%@cat.color='black'%>></label>
+    <label>Black<option name="cat[color]" value=<%@cat.color='black'%>></label>
+    <label>White<option name="cat[color]" value=<%@cat.color='white'%>></label>
+    <label>Gray<option name="cat[color]" value=<%@cat.color='gray'%>></label>
+    <label>Orange<option name="cat[color]" value=<%@cat.color='orange'%>></label>
+  </select>
+  </label>
+ 
+  <input type="submit" value="Create Cat">
+</form>
+
+
+

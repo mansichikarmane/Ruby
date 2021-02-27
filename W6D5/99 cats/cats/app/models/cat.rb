@@ -21,6 +21,6 @@ class Cat < ApplicationRecord
   validates :sex, inclusion: {in: SEXES}
 
   def age
-    Date.now - self.birth_date
+    time_ago_in_words(birth_date)
   end
 end
