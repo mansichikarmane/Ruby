@@ -9,6 +9,14 @@
   </head>
 
   <body>
+    <header><%= @user.user_name %></header>
+
+    <% if @current_user.nil? %> 
+     <input type= "submit" value="Log Out">
+    <% else %> 
+    <input type= "submit" value="Log In">
+    <% end %> 
+
     <%= yield %>
   </body>
 </html>
