@@ -193,3 +193,95 @@ end
 
   <input type="submit" value="Create User">
 </form>
+# can test this using /users/new 
+# need to put @user in our create method after this.
+def create
+  if user.save
+    redirect_to user_url(@user.id)
+  else
+    render :new
+  end
+end
+
+# now  edit in users_controller.rb
+def edit
+  @user = User.find(params[:id])
+  render :edit
+end
+
+# make corresponding edit.html.erb
+  # can copy paste skeleton from new
+  <h1>Edit User Form</h1>
+
+<form action="<% user_url(@user) %>" method="POST">
+  <input type="hidden" name="_method" value="patch"
+  <label>Username:
+    <input type="text" name="user[username]" value="<% @user.username %>">
+  </label>
+  <label>Age:
+    <input type="text" name="user[age]" value="<% @user.age %>">
+  </label>
+  <label>Email:
+    <input type="text" name="user[email]" value="<% @user.email %>">
+  </label>
+
+  <input type="submit" value="Edit User">
+</form>
+
+# write def update in users_controller.rb
+def update
+  @user = User.find_by(id: params[:id])
+  # try to update user
+  if @user.update(user_params)
+    redirect_to user_url(user)
+  else
+    render :edit
+  end
+end
+
+# make a file partial for form _form.html.erb
+<% if type  == 'new' %>
+  <% action_url = users_url %>
+  <% button_text = 'Create User' %>
+  
+  <% else %>
+  <% action_url = user_url(user) %>
+  <% button_text = 'Edit User' %>
+  <% end %>
+
+<form action="<%= action_url %>" method="POST">
+  <% if type == 'edit' %>
+
+
+  <input type="hidden" name="_method" value="patch"
+  <label>Username:
+    <input type="text" name="user[username]" value="<% @user.username %>">
+  </label>
+  <label>Age:
+    <input type="text" name="user[age]" value="<% @user.age %>">
+  </label>
+  <label>Email:
+    <input type="text" name="user[email]" value="<% @user.email %>">
+  </label>
+
+  <input type="submit" value= "<% button_text%>" >
+</form>
+
+# edit in new.html.rb and edit.html.erb
+
+# edit show.html.erb
+
+# in users_controller.rb
+def destroy 
+  @user = User.find_by(id: params[:id])
+  @user.destroy
+  redirect_to users_url
+end
+
+# in show.html.erb
+<%= render "user", user:@user, action: 'show'%>
+<a href="<%= edit_user_url(@user)">Edit User</a>
+<form action="<% user_url(@user)%>" method ="POST" 
+  <input type="hidden" name="_method" value="DELETE"
+  <input type="submit" value="Delete User">
+</form>
