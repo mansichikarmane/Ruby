@@ -13,6 +13,7 @@ class User < ApplicationRecord
 
   def reset_session_token!
     self.session_token = SecureRandom::urlsafe_base64
+    # 16 is the default argument
     self.save!
     self.session_token
   end
@@ -31,3 +32,8 @@ class User < ApplicationRecord
     end
   end
 end
+
+# helper function
+  # def is_password?(password)
+    # BCrypt::Password.new(self.password_digest).is_password?(password)
+  # end
