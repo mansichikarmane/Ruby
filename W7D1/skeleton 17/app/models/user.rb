@@ -2,6 +2,10 @@ class User < ApplicationRecord
   validates :user_name, :session_token, presence: true, uniqueness: true
   validates :password_digest, presence: true
 
+  has_many :cats,
+  foreign_key :user_id,
+  class_name: :Cat
+
   after_initialize :ensure_session_token
   def ensure_session_token
     self.session_token ||= SecureRandom::urlsafe_base64

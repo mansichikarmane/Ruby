@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
   # skip_before_action :verify_authenticity_token
 
-  def login!(user)
+  def login_user!(user)
     session[:session_token] = user.reset_session_token!
   end
 
@@ -24,4 +24,10 @@ class ApplicationController < ActionController::Base
   def require_logged_in
     redirect_to new_session_url unless logged_in?
   end
+
+  def redirect_if_logged_in
+    redirect_to cats_url if logged_in?
+  end
+
+
 end
