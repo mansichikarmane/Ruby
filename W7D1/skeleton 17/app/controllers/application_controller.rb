@@ -29,5 +29,11 @@ class ApplicationController < ActionController::Base
     redirect_to cats_url if logged_in?
   end
 
+  def require_user!
+    redirect_to new_session_url if current_user.nil?
+  end
 
+  def require_no_user!
+    redirect_to cats_url if current_user
+  end
 end

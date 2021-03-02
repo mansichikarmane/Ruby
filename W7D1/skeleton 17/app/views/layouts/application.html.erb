@@ -10,16 +10,20 @@
 
   <body>
     <h1> Hello</h1>
-    <header><%= @user.user_name %></header>
+    <header>
+    <% if @user %>
+    <%= @user.user_name %>
+    <%end%>
+    </header>
 
     <% if logged_in? %> 
     <form action= "<%= session_url %>" method='Post'>
       <input type='hidden' name= '_method' value='Delete'>
-      <a href= new_session_url value="Log Out"> Log Out</a>
+      <a href= "<%=new_session_url%>" value="Log Out"> Log Out</a>
     </form>
     <% else %> 
-    <a href= new_session_url value="Log In"> Log In</a>
-    <a href= new_user_url value="Sign Up">Sign Up</a>
+    <a href= "<%=new_session_url%>" value="Log In"> Log In</a>
+    <a href= "<%=new_user_url%>" value="Sign Up">Sign Up</a>
     <% end %> 
 
     <%= yield %>

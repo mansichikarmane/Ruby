@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_logged_in, only: [:index]
-  before_action :redirect_if_logged_in, [:new]
+  before_action :require_no_user!
 
   def new
     @user = User.new
@@ -11,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login_user!(@user)
-      redirect_to user_url(@user.id)
+      redirect_to cats_url
     else
       render :new
     end

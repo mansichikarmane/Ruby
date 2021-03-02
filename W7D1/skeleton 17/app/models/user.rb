@@ -3,7 +3,7 @@ class User < ApplicationRecord
   validates :password_digest, presence: true
 
   has_many :cats,
-  foreign_key :user_id,
+  foreign_key: :user_id,
   class_name: :Cat
 
   after_initialize :ensure_session_token

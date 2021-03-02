@@ -1,6 +1,6 @@
 class CatsController < ApplicationController
-  before_action :logged_in?, only: [:new, :create]
-  before_action , only: [:edit, :update]
+  before_action :require_user!, only: [:new, :create, :edit, :update]
+
   def index
     @cats = Cat.all
     render :index
@@ -43,9 +43,12 @@ class CatsController < ApplicationController
 
   def check_owner
     @cat = Cat.find(params[:id]) 
-    @current_user.id == @cat.user_id
+    if @current_user.id != @cat.user_id
+      redirect_to cats_url
+    end
   end
 
+  
   private
 
   def cat_params

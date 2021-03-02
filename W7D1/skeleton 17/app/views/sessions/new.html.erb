@@ -1,10 +1,10 @@
 <h1>Sign In</h1>
-  <form action= "<%= session_url &>" method = "Post">
+  <form action= "<%= session_url %>" method = "Post">
     <label>Username:
       <input type="text" name= 'user[username]'>
     </label>
     <label>Password:
       <input type="password" name= 'user[password]'>
     </label>
-    <a href= cats_url value="Sign In">Sign In</a>
+    <a href= <%=cats_url%> value="Sign In">Sign In</a>
   </form>
