@@ -12,7 +12,7 @@ RSpec.describe UsersController, type: :controller do
       it "creates user, logs them in and redirects to the user's show page" do
         expect(User.last.username).to eq("lilly_llama")
         expect(session[:session_token]).to eq(user.session_token)
-        expect(response).to redirect_to(user_url(user))
+        expect(response).to redirect_to(users_url)
       end
 
     end
