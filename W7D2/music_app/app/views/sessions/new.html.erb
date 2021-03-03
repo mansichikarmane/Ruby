@@ -1,0 +1,20 @@
+<h2 style="font-family:verdana;">Sign In</h2>
+
+<form action="<%=session_url%>" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+
+  <p>
+    <label>Email:</label>
+    <input type="text" name="user[email]">
+  </p>
+  <p>
+    <label>Password:</label>
+    <input type="password" name="user[password]">
+  </p>
+
+  <input type="submit" value="Submit">
+
+
+
+
+</form>
