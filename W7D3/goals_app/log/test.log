@@ -1,0 +1,8 @@
+  [1m[35m (35.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "goals_app_test"[0m
+  [1m[35m (76.9ms)[0m  [1m[35mCREATE DATABASE "goals_app_test" ENCODING = 'unicode'[0m
+  [1m[35m (32.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "goals_app_test"[0m
+  [1m[35m (184.1ms)[0m  [1m[35mCREATE DATABASE "goals_app_test" ENCODING = 'unicode'[0m
+  [1m[35m (29.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "goals_app_test"[0m
+  [1m[35m (267.6ms)[0m  [1m[35mCREATE DATABASE "goals_app_test" ENCODING = 'unicode'[0m
+  [1m[35m (43.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "goals_app_test"[0m
+  [1m[35m (234.9ms)[0m  [1m[35mCREATE DATABASE "goals_app_test" ENCODING = 'unicode'[0m
