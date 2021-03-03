@@ -9,9 +9,13 @@ RSpec.describe UsersController, type: :controller do
       before :each do
         post :create, params: valid_params
       end
-      it "creates user, logs them in and redirects to the user's show page" do
+      it "creates user" do
         expect(User.last.username).to eq("lilly_llama")
+      end
+      it "logs in user" do
         expect(session[:session_token]).to eq(user.session_token)
+      end
+      it "redirects to user's show page" do
         expect(response).to redirect_to(users_url)
       end
 
