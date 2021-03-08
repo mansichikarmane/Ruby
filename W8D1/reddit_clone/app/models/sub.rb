@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: subs
+#
+#  id           :bigint           not null, primary key
+#  description  :string
+#  title        :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  moderator_id :integer
+#
 class Sub < ApplicationRecord
   validates :title, :description, presence: true
 
@@ -5,7 +16,12 @@ class Sub < ApplicationRecord
     foreign_key: :moderator_id,
     class_name: :User
 
-  has_many :posts,
+  belongs_to :postsub, 
     foreign_key: :sub_id,
-    class_name: :Post
+    class_name: :PostSub
+
+  has_many :posts, 
+    through: :postsub,
+    source: :subs
+
 end

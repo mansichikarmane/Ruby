@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :bigint           not null, primary key
+#  password_digest :string
+#  session_token   :string
+#  username        :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+# Indexes
+#
+#  index_users_on_username  (username)
+#
 class User < ApplicationRecord
   validates :username, :password_digest, :session_token, presence: true
   validates :username, uniqueness: true
@@ -14,6 +29,11 @@ class User < ApplicationRecord
   has_many :posts,
     foreign_key: :author_id,
     class_name: :Post
+
+  has_many :comments,
+    foreign_key: :commenter_id,
+    class_name: :Comment
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
@@ -35,11 +55,15 @@ class User < ApplicationRecord
     user.is_password?(password) ? user : nil
   end
 
+
+
   private
 
   def ensure_session_token
     self.session_token ||= SecureRandom.base64
   end
+
+
   
 
 end

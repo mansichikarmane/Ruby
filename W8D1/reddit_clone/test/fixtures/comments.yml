@@ -1,17 +1,17 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: comments
 #
-#  id              :bigint           not null, primary key
-#  password_digest :string
-#  session_token   :string
-#  username        :string
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id           :bigint           not null, primary key
+#  content      :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  commenter_id :integer
+#  post_id      :integer
 #
 # Indexes
 #
-#  index_users_on_username  (username)
+#  index_comments_on_commenter_id  (commenter_id)
 #
 
 # This model initially had no columns defined. If you add columns to the
